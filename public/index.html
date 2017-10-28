@@ -32,24 +32,36 @@
 
     
     <script>
-      $(document).ready(function(){
-        $.getJSON('http://localhost:3000/users', function(data){
-            console.log("1", data);// Output in console for testing if data is retrieved
-            var table = '<table>';
+    //   $(document).ready(function(){
+    //     $.getJSON('http://localhost:3000/users', function(data){
+    //         console.log("1", data);// Output in console for testing if data is retrieved
+    //         var table = '<table>';
             
-            $.each(data,function(index, item){
-              console.log(item)
-                table +='<tr><td>' + item.firstname + '</td><td>' + item.lastname + '</td><td>' + item.age + '</td></tr>'
-            });
-            table += '</table>'
-            $('#output').html(table);
+    //         $.each(data,function(index, item){
+    //           console.log(item)
+    //             table +='<tr><td>' + item.firstname + '</td><td>' + item.lastname + '</td><td>' + item.age + '</td></tr>'
+    //         });
+    //         table += '</table>'
+    //         $('#output').html(table);
     
     
-        });
-    });
+    //     });
+    // });
+    $.getJSON('http://localhost:3000/users', function(data) {
+        // console.log(data);
+        for(var i=0 ; i < data.length; i++) {
+          console.log(data[i]);
+          var text = `Firstname: ${data[i].firstname}<br>
+                      Time: ${data[i].lastname}<br>
+                      Age: ${data[i].age}`
+
+        }
+  
+          $("#output").html(text);
+      });
     
     
-    $('#spots').append('<tr><td>my data</td><td>more data</td></tr>');
+    // $('#output').append('<tr><td>my data</td><td>more data</td></tr>');
       </script>
     
   </body>
