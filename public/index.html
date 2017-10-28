@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+  <head>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+      
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+		<!-- Bootstrap JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <div class="container">
+        
+      <h1 class="jumbotron">Hello World</h1>
+      <table class="table .table-stripe">
+          <thead>
+            <tr>
+              <th id="name" class=".col-md-2 .info">Firstname</th>
+              <th id="desc" class=".col-md-6 .info">Lastname</th>
+              <th id="link" class=".col-md-2 .info">Age</th>
+            </tr>
+          </thead>
+          <tbody id="output">
+            <tr>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    
+    <script>
+      $(document).ready(function(){
+        $.getJSON('http://localhost:3000/users', function(data){
+            console.log("1", data);// Output in console for testing if data is retrieved
+            var table = '<table>';
+            
+            $.each(data,function(index, item){
+              console.log(item)
+                table +='<tr><td>' + item.firstname + '</td><td>' + item.lastname + '</td><td>' + item.age + '</td></tr>'
+            });
+            table += '</table>'
+            $('#output').html(table);
+    
+    
+        });
+    });
+    
+    
+    $('#spots').append('<tr><td>my data</td><td>more data</td></tr>');
+      </script>
+    
+  </body>
+</html>
